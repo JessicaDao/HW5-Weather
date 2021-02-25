@@ -13,10 +13,53 @@
     <header class="jumbotron">
         <img src="logo.png">
     </header>
+    <div class="container-fluid">
+        <div class="card-search">
+          <div class="col-3">
+            <label>Enter city here:</label>
+            <div class="search-content">
+              <form class="search-form">
+                <input
+                  class="searchBox form-control"
+                  id="inputValue"  
+                  type="text"
+                  name="cityInput"
+                  placeholder="City"
+                />
+              <div class="search-content">
+                  <button id="searchBtn">
+                    <i class="fa fa-search text-white"></i>
+                  </button>
+              </div>
+              </form>
+            </div>
+            <h3>Previous Searched Cities: </h3>
+            <div id="searchHistory"></div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h2>Current Weather:</h2>
+              <!--Current Weather-->
+                <div id="currentWeather" class="card-current">
+                  <h4 id="currentDate"></h4>
+                  <h5>City: <span id="currentCity"></span></h5>
+                  <div id="currentIcon"><img src=""  class="center"/></div>
+                  <p>Weather Conditions: <span id="weatherDesc"></span></p>
+                  <p>Temperature: <span id="temp"></span></p>
+                  <p>Humidity: <span id="humidity"></span></p>
+                  <p>Wind Speed: <span id="wind"></span></p>
+                  <p>UV Index: <span id="ultraVI"></span></p>
+                </div> 
+              </div>
+          </div>
 
-<footer class="container-fluid text-center">
-    <p>Jessica Dao 2020</p>
-</footer>
+        </div>
+    </div>
+
+
+    <footer class="container-fluid text-center">
+        <p>Jessica Dao 2020</p>
+    </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="script.js"></script>
