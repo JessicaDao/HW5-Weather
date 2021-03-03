@@ -37,3 +37,13 @@
     font-size: 20px;
 }
 
+.search-content {
+    padding: 10px;
+}
+
+.saved-city-button {
+    background-color: rgb(204, 230, 240);
+    color:black;
+    margin: 3px;
+    border-radius: 2px;
+}
