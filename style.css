@@ -1,0 +1,39 @@
+.jumbotron {
+    text-align: center;
+    background-color: rgb(197, 231, 243);
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+.searchBox {
+    font-size: 20px;
+    height: 50px;
+    width: 70px;
+}
+
+.col-3 {
+    float: left;
+    flex: wrap;
+    width: 30%;
+    padding: 10px;
+    
+}
+
+#searchBtn {
+    background-color: rgb(197, 231, 243);
+    border-radius: 14px;
+    width: 70px
+}
+
+.card-current {
+    display: grid;
+    grid: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    width: 100%;
+    background-color: rgb(197, 231, 243);
+    color: white;
+    border: 2px solid black;
+    font-size: 20px;
+}
+
