@@ -5,6 +5,8 @@ var humidityEl = "#humidity";
 var windEl = "#wind";
 var uvIndexEl = "#ultraVI";
 let weatherDesc = "#weatherDesc";
+let lat = "";
+let lon = "";
 
 // City Submit Button
 document
@@ -23,14 +25,12 @@ document
     }
   });
 
-// Save to localStorage
 function saveToStorage(cityInput) {
   var inputDataSaved = JSON.parse(localStorage.getItem("searchCity")) || [];
   inputDataSaved.push(cityInput);
   localStorage.setItem("searchCity", JSON.stringify(inputDataSaved));
 }
 
-// Save localStorage to page
 function renderSaveBtns() {
   let inputDataSaved = JSON.parse(localStorage.getItem("searchCity")) || [];
   if (inputDataSaved === null);
@@ -70,8 +70,7 @@ function getWeather(cityName) {
           return weatherResponse.json();
         })
         .then(function (fiveDayData) {
-          console.log(fiveDayData);
-          showFiveDayWeather(fiveDayData);
+          weekWeather(fiveDayData);
         });
     });
 }
@@ -95,3 +94,41 @@ function todayWeather(cityName, data) {
   $("#card-text").empty();
 }
 
+function weekWeather(data) {
+  let currentUVI = (document.querySelector(
+    "#currentUVI"
+  ).innerHTML = Math.round(data.current.uvi));
+
+  document.querySelector("#weekContain").innerHTML = "";
+  for (var i = 0; i < 5; i++) {
+    let forecastDates = moment()
+      .add(i + 1, "days")
+      .format("ddd MM/DD/YYYY");
+    let day = document.createElement("div");
+    day.innerHTML = [
+      `<h5>${forecastDates}</h5>
+    <img src="https://openweathermap.org/img/wn/${
+      data.daily[i].weather[0].icon
+    }@2x.png">
+    <p>${data.daily[i].weather[0].description}</p>
+    <p>Temperature: ${Math.round(data.daily[i].temp.day)}°F</p>
+    <p>Humidity: ${data.daily[i].humidity}%</p>`,
+    ];
+    document.querySelector("#weekContain").appendChild(day);
+  }
+  uviBadge(data);
+  $("#card-text").empty();
+}
+
+function uviBadge(data) {
+  let currentUVI = $("#currentUVI");
+  currentUVI.innerHTML = Math.round(data.current.uvi);
+
+  if (data.current.uvi <= 2) {
+    currentUVI.addClass("badge badge-success");
+  } else if (data.current.uvi > 2 && data.current.uvi <= 5) {
+    currentUVI.addClass("badge badge-warning");
+  } else if (data.current.uvi > 5) {
+    currentUVI.addClass("badge badge-danger");
+  }
+}
